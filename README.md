@@ -5,6 +5,7 @@
 参考文档：
 - [「AI + 全栈开发」第 1 章：从一个 Todo List 开始](https://ycndy5tax9cx.feishu.cn/wiki/X4AJwRH0jiiv4AkrYIucPvYTnrh?from=from_copylink)
 - [Ant Design 官方文档](https://ant-design.antgroup.com/index-cn)
+- [Vite 配置 alias](https://ycndy5tax9cx.feishu.cn/wiki/PXb9wAhTJiSQSDk9cuacBtRxnGe?from=from_copylink)
 
 ## 项目开发
 
