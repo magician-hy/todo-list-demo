@@ -4,3 +4,8 @@
   overflow: hidden;
   text-align: center;
 }
+
+.task-sort {
+  display: flex;
+  justify-content: flex-start;
+}
