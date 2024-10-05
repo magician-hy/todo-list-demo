@@ -27,6 +27,11 @@ pnpm create vite todo-list-demo --template react-ts
 pnpm install antd --save
 ```
 
+安装 @ant-design/icons 图标库：
+```bash
+pnpm install @ant-design/icons --save
+```
+
 ### 安装依赖
 
 ```bash
