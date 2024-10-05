@@ -34,7 +34,7 @@ export const TaskItem: FC<Props> = ({ task, onStatusChange, onEdit, onDelete }) 
       >
         {task.description}
       </Paragraph>
-      <Space>
+      <div className="task-item-operation">
         <Select
           value={task.status}
           onChange={(value) => onStatusChange(task.id, value)}
@@ -62,7 +62,7 @@ export const TaskItem: FC<Props> = ({ task, onStatusChange, onEdit, onDelete }) 
             </Button>
           </Popconfirm>
         </Space>
-      </Space>
+      </div>
     </div>
   );
 };
