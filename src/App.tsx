@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import { Modal } from 'antd';
 import { TaskColumn } from './components/TaskColumn';
+import { TaskForm } from './components/TaskForm';
 import { Task } from './types';
 
 import './App.css';
@@ -24,16 +27,39 @@ const mockTasks: Task[] = [
 ]
 
 function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [editingTask, setEditingTask] = useState<Task | undefined>(undefined);
+
+  const handleAddOrEditTask = () => {
+    setIsModalVisible(true);
+  };
+
   return (
     <>
       <TaskColumn
         title="计划中"
         tasks={mockTasks}
-        onAddTask={() => { }}
+        onAddTask={handleAddOrEditTask}
         onStatusChange={() => { }}
-        onEditTask={() => { }}
+        onEditTask={handleAddOrEditTask}
         onDeleteTask={() => { }}
       />
+      <Modal
+        title={editingTask ? "编辑任务" : "添加新任务"}
+        visible={isModalVisible}
+        onCancel={() => {
+          setIsModalVisible(false);
+        }}
+        footer={null}
+      >
+        <TaskForm
+          task={editingTask}
+          onSave={handleAddOrEditTask}
+          onCancel={() => {
+            setIsModalVisible(false);
+          }}
+        />
+      </Modal>
     </>
   );
 }

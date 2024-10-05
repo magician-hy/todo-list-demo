@@ -32,6 +32,13 @@ pnpm install antd --save
 pnpm install @ant-design/icons --save
 ```
 
+安装 uuid 库：
+```bash
+pnpm install uuid --save
+
+pnpm i --save-dev @types/uuid
+```
+
 ### 安装依赖
 
 ```bash
