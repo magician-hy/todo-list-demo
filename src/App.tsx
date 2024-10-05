@@ -17,6 +17,13 @@ function App() {
   const [editingTask, setEditingTask] = useState<Task | undefined>(undefined); // 编辑任务
   const [sortBy, setSortBy] = useState<'createdAt' | 'priority'>('createdAt'); // 排序方式
 
+  /** 任务栏相关信息 */
+  const columns = [
+    { title: "⏰ 计划中", status: 'planned' },
+    { title: "⚡️ 进行中", status: 'in-progress' },
+    { title: "✅ 已完成", status: 'completed' },
+  ];
+
   /** 新增/编辑任务 */
   const handleAddOrEditTask = (task: Task) => {
     if (editingTask) {
@@ -67,54 +74,24 @@ function App() {
           </Col>
         </Row>
         <Row gutter={16} style={{ height: 'calc(100vh - 200px)' }}>
-          <Col span={8} style={{ height: '100%' }}>
-            <TaskColumn
-              title="⏰ 计划中"
-              tasks={filteredTasks('planned')}
-              onAddTask={() => {
-                setEditingTask(undefined);
-                setIsModalVisible(true);
-              }}
-              onStatusChange={handleStatusChange}
-              onEditTask={(task) => {
-                setEditingTask(task);
-                setIsModalVisible(true);
-              }}
-              onDeleteTask={handleDeleteTask}
-            />
-          </Col>
-          <Col span={8} style={{ height: '100%' }}>
-            <TaskColumn
-              title="⚡️ 进行中"
-              tasks={filteredTasks('in-progress')}
-              onAddTask={() => {
-                setEditingTask(undefined);
-                setIsModalVisible(true);
-              }}
-              onStatusChange={handleStatusChange}
-              onEditTask={(task) => {
-                setEditingTask(task);
-                setIsModalVisible(true);
-              }}
-              onDeleteTask={handleDeleteTask}
-            />
-          </Col>
-          <Col span={8} style={{ height: '100%' }}>
-            <TaskColumn
-              title="✅ 已完成"
-              tasks={filteredTasks('completed')}
-              onAddTask={() => {
-                setEditingTask(undefined);
-                setIsModalVisible(true);
-              }}
-              onStatusChange={handleStatusChange}
-              onEditTask={(task) => {
-                setEditingTask(task);
-                setIsModalVisible(true);
-              }}
-              onDeleteTask={handleDeleteTask}
-            />
-          </Col>
+          {columns.map(({ title, status }) => (
+            <Col key={status} span={8} style={{ height: '100%' }}>
+              <TaskColumn
+                title={title}
+                tasks={filteredTasks(status as Task['status'])}
+                onAddTask={() => {
+                  setEditingTask(undefined);
+                  setIsModalVisible(true);
+                }}
+                onStatusChange={handleStatusChange}
+                onEditTask={(task) => {
+                  setEditingTask(task);
+                  setIsModalVisible(true);
+                }}
+                onDeleteTask={handleDeleteTask}
+              />
+            </Col>
+          ))}
         </Row>
       </Content>
       <Modal
