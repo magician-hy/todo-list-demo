@@ -30,7 +30,7 @@ export const TaskItem: FC<Props> = ({ task, onStatusChange, onEdit, onDelete }) 
       </div>
       <Paragraph
         ellipsis={{ rows: 2, expandable: true, symbol: 'more' }}
-        style={{ marginBottom: '8px' }}
+        className="task-item-description"
       >
         {task.description}
       </Paragraph>

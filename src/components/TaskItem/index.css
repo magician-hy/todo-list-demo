@@ -16,6 +16,11 @@
   margin-bottom: 8px;
 }
 
+.task-item-description {
+  margin-bottom: 8px;
+  text-align: start;
+}
+
 .task-item-operation {
   display: flex;
   justify-content: space-between;
